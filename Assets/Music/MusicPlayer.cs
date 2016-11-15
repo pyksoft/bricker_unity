@@ -12,14 +12,13 @@ public class MusicPlayer : MonoBehaviour {
 
   void Awake() {
     if (instance != null && instance != this) {
-   
+      print("destroying");
       Destroy(this.gameObject);
       return;
     } else {
       instance = this;
       DontDestroyOnLoad(this.gameObject);
     }
-
 
   }
 
