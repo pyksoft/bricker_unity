@@ -8,10 +8,12 @@ public class Ball : MonoBehaviour {
   private Rigidbody2D rigidBody;
   private Vector3 paddleToBallVector;
 
+
   // Use this for initialization
   void Start() {
-    paddle = GameObject.FindObjectOfType<Paddle>();
 
+
+    paddle = GameObject.FindObjectOfType<Paddle>();
     paddleToBallVector = this.transform.position - paddle.transform.position;
     rigidBody = GetComponent<Rigidbody2D>();
   }
@@ -29,6 +31,17 @@ public class Ball : MonoBehaviour {
         hasStarted = true;
         rigidBody.velocity = new Vector2 (2f, 10f);
       }
+    }
+  }
+
+
+  void OnCollisionEnter2D(Collision2D collision) {
+
+    Vector2 tweak = new Vector2 (Random.Range(0f, 0.2f), Random.Range(0f, 0.2f));
+
+    if (hasStarted) {
+      GetComponent<AudioSource>().Play();
+      rigidBody.velocity += tweak;
     }
   }
 }
