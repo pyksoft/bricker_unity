@@ -4,6 +4,8 @@ using System.Collections;
 public class MusicPlayer : MonoBehaviour {
   private static MusicPlayer instance = null;
 
+ 
+
   public static MusicPlayer Instance { 
     get { 
       return instance; 
@@ -20,5 +22,25 @@ public class MusicPlayer : MonoBehaviour {
     }
 
   }
+
+  //UNTESTED
+
+  //  public bool canPlay;
+  //
+  //
+  //  void PlayAudio(Audioclip clip) {
+  //
+  //    if (canPlay) {
+  //      canPlay = false;
+  //    }
+  //
+  //    GetComponent<AudioSource>().PlayOneShot(clip);
+  //    StartCoroutine(Reset());
+  //  }
+  //
+  //  IEnumerator Reset() {
+  //    yield return new WaitForSeconds (.2f);
+  //    canPlay = true;
+  //  }
 
 }
