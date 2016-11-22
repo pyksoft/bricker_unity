@@ -9,9 +9,10 @@ public class LevelManager : MonoBehaviour {
   }
 
   public void LoadNextLevel() {
-
     // Indexes are set in build settings
-    Application.LoadLevel(Application.loadedLevel + 1);
+    int indexSC = SceneManager.GetActiveScene().buildIndex;
+    int nextScene = indexSC + 1;
+    SceneManager.LoadScene(nextScene);
   }
 
   public void QuitRequest() {
@@ -21,4 +22,10 @@ public class LevelManager : MonoBehaviour {
     Application.Quit();
   }
 
+
+  public void BrickDestroyed() {
+    if (Brick.breakableCount <= 0) {
+      LoadNextLevel();
+    }
+  }
 }
